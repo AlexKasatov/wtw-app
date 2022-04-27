@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
+import { useState, useEffect } from 'react';
 import { Container } from './Container';
 
 const HeaderEl = styled.header`
@@ -16,9 +17,9 @@ const Title = styled.a.attrs({
 const ModeSwitcher = styled.div``;
 
 const Header = () => {
+  const [theme, setTheme] = useState(null);
 
-
-
+  useEffect(() => {}, []);
 
   return (
     <HeaderEl>
@@ -26,7 +27,7 @@ const Header = () => {
         <Wrapper>
           <Title>Where is the world?</Title>
           <ModeSwitcher>
-            <IoMoonOutline /> Light Theme
+            <IoMoon /> Light Theme
           </ModeSwitcher>
         </Wrapper>
       </Container>
