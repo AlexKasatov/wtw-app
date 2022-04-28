@@ -10,7 +10,6 @@ const InputContainer = styled.label`
         border-radius: var(--raddii);
         box-shadow: var(--shadow);
         width: 100%;
-        margin-top: 2rem;
         margin-bottom: 1.5rem;
 
         //? если щирина больше 767px
