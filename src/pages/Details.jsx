@@ -1,5 +1,10 @@
 import React from 'react';
+import { useParams, useNavigate } from 'react-router';
 
-const Details = () => <div>Details</div>;
+const Details = () => {
+        const { id } = useParams();
+
+        return <div>Details</div>;
+};
 
 export default Details;

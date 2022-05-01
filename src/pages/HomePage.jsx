@@ -7,6 +7,7 @@ import Card from '../components/Card';
 
 const HomePage = () => {
         const [countries, setCountries] = useState([]);
+        console.log("🚀 ~ file: HomePage.jsx ~ line 10 ~ HomePage ~ countries", countries)
 
         useEffect(() => {
                 axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
