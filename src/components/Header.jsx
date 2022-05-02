@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from './Container';
 
 const HeaderEl = styled.header`
@@ -17,8 +18,8 @@ const Wrapper = styled.div`
 
 // ? Refactor Mode Switcher and Title with nestet styles
 
-const Title = styled.a.attrs({
-        href: '/',
+const Title = styled(Link).attrs({
+        to: '/',
 })`
         color: var(--colors-text);
         font-size: var(--fs-sm);

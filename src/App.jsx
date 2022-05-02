@@ -1,7 +1,12 @@
 import { PageRouters } from './router/PageRouters';
+import ContextProvider from './context/index';
 
 // TODO create global styles
 
-const App = () => <PageRouters />;
+const App = () => (
+        <ContextProvider>
+                <PageRouters />
+        </ContextProvider>
+);
 
 export default App;
