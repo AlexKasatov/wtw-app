@@ -1,45 +1,57 @@
 import { useState, useEffect, Children } from 'react';
-import axios from 'axios';
-import { ALL_COUNTRIES } from '../api/config';
+import { Link } from 'react-router-dom';
+import ApiCountries from '../api/config';
 import Controls from '../components/Controls';
 import List from '../components/List';
 import Card from '../components/Card';
 
+import useFetch from '../hooks/useFetch';
+import { Loader } from '../components/UI/spinner/Loader';
+
 const HomePage = () => {
         const [countries, setCountries] = useState([]);
-        console.log("🚀 ~ file: HomePage.jsx ~ line 10 ~ HomePage ~ countries", countries)
+
+        const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
+                const response = await ApiCountries.getAll('name,capital,flags,population,region`');
+                setCountries(response.data);
+        });
 
         useEffect(() => {
-                axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
+                fetchCountry();
         }, []);
 
         return (
                 <>
                         <Controls />
-                        <List>
-                                {countries.map((c) => {
-                                        const countryInfo = {
-                                                img: c.flags.png,
-                                                name: c.name,
-                                                info: [
-                                                        {
-                                                                title: 'Population',
-                                                                description: c.population.toLocaleString(),
-                                                        },
-                                                        {
-                                                                title: 'Region',
-                                                                description: c.region,
-                                                        },
-                                                        {
-                                                                title: 'Capital',
-                                                                description: c.capital,
-                                                        },
-                                                ],
-                                        };
+                        {isCountryLoading ? (
+                                <Loader />
+                        ) : (
+                                <List>
+                                        {countries.map((c) => {
+                                                const countryInfo = {
+                                                        img: c.flags.png,
+                                                        name: c.name,
+                                                        info: [
+                                                                {
+                                                                        title: 'Population',
+                                                                        description: c.population.toLocaleString(),
+                                                                },
+                                                                {
+                                                                        title: 'Region',
+                                                                        description: c.region,
+                                                                },
+                                                                {
+                                                                        title: 'Capital',
+                                                                        description: c.capital,
+                                                                },
+                                                        ],
+                                                };
 
-                                        return Children.toArray(<Card {...countryInfo} />);
-                                })}
-                        </List>
+                                                return Children.toArray(<Card {...countryInfo} />);
+                                        })}
+                                </List>
+                        )}
+                        {isError && <h1>{isError.message}</h1>}
                 </>
         );
 };

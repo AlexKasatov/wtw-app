@@ -15,7 +15,7 @@ const Wrapper = styled.div`
         padding: 2rem 0;
 `;
 
-//! Refactor Mode Switcher and Title with nestet styles
+// ? Refactor Mode Switcher and Title with nestet styles
 
 const Title = styled.a.attrs({
         href: '/',
@@ -37,13 +37,14 @@ const ModeSwitcher = styled.div`
 // !
 
 const Header = () => {
+        //! TODO REFACTOR to ReactContext --------
         const [theme, setTheme] = useState('light');
-
         const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
         useEffect(() => {
                 document.body.setAttribute('data-theme', theme);
         }, [theme]);
+        // !---------------------------
 
         return (
                 <HeaderEl>

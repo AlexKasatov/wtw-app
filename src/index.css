@@ -19,6 +19,8 @@
 }
 
 body[data-theme="dark"] {
+  --spinner: rgb(116, 248, 252);
+
   --color-text: hsl(0, 0%, 100%);
   --color-bg: hsl(207, 26%, 17%);
   --color-ui-base: hsl(209, 23%, 22%);
@@ -27,6 +29,8 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="light"] {
+  --spinner: rgb(116, 248, 252);
+
   --color-text: hsl(200, 15%, 8%);
   --color-bg: hsl(0, 0%, 98%);
   --color-ui-base: hsl(0, 0%, 100%);
