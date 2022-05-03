@@ -11,18 +11,24 @@ import { useProviderContext } from '../hooks/useProviderContext';
 
 const HomePage = () => {
         const { countries, isCountryLoading, isError } = useProviderContext();
-        // const [countries, setCountries] = useState([]);
-
-        // const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
-        //         const response = await ApiCountries.getAll('name,capital,flags,population,region`');
-        //         setCountries(response.data);
-        // });
+        const [filtredCountries, setFiltredCountries] = useState(countries);
 
         const navigate = useNavigate();
 
-        // useEffect(() => {
-        //         fetchCountry();
-        // }, []);
+        const handleSearch = (search, region) => {
+                let data = [...countries];
+
+                if (region) {
+                        data = data.filter((c) => c.region.inculdes(region));
+                }
+
+                if (search) {
+                        // eslint-disable-next-line no-unused-vars
+                        data = data.filter((c) => c.name.toLowerCase().includes(search.toLowerCase()));
+                }
+
+                setFiltredCountries(data);
+        };
 
         const handleOpenDetails = (countryName) => {
                 navigate(`/country/${countryName}`);
@@ -30,7 +36,7 @@ const HomePage = () => {
 
         return (
                 <>
-                        <Controls />
+                        <Controls onSearch={handleSearch} />
                         {isCountryLoading ? (
                                 <Loader />
                         ) : (

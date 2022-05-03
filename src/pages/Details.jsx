@@ -1,39 +1,28 @@
-import { useState, useEffect, useMemo, Children } from 'react';
+import { useLayoutEffect, useState, useEffect, useMemo, Children } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiCountries from '../api/config';
 import useFetch from '../hooks/useFetch';
 import { useProviderContext } from '../hooks/useProviderContext';
 
 const Details = () => {
-        const param = useParams();
         const { countries } = useProviderContext();
-        const [country, setCountry] = useState(() => JSON.parse(localStorage.getItem('country')) || []);
-        console.log('🚀 ~ file: Details.jsx ~ line 11 ~ Details ~ country', country.length);
-        console.log('🚀 ~ file: Details.jsx ~ line 11 ~ Details ~ country', country);
+        const param = useParams();
+        const [country, setCountry] = useState(() => {
+                const data = countries.filter((c) => c.name === param.name);
+                return data;
+        });
 
-        const newArray = () => {
-                const newArr = [];
-                const filtred = countries.find((c) => c.name === param.name);
-                newArr.push(filtred);
-                setCountry(newArr);
-        };
         useEffect(() => {
-                localStorage.setItem('country', JSON.stringify(country));
+                setCountry(JSON.parse(window.localStorage.getItem('country', JSON.stringify(country))));
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
+
+        useEffect(() => {
+                window.localStorage.setItem('country', JSON.stringify(country));
+                // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [country]);
 
-        // useMemo(() => {
-        //         newArray();
-        // }, []);
-
-        return (
-                <div>
-                        {country.length > 0 ? (
-                                <>{Children.toArray(country.map((c) => <div>{c.name}</div>))}</>
-                        ) : (
-                                <div>Trouble</div>
-                        )}
-                </div>
-        );
+        return country.length >= 1 && <div>{country[0].name}</div>;
 };
 
 export default Details;
