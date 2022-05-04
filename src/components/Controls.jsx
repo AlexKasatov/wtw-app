@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Search } from './Search';
 import { CustomSelect } from './CustomSelect';
 
@@ -24,15 +24,14 @@ const Wrapper = styled.div`
 `;
 
 const Controls = ({ onSearch }) => {
-        const [search, setSearch] = useState('');
         const [region, setRegion] = useState('');
+        const [search, setSearch] = useState('');
 
         useEffect(() => {
                 const regionValue = region?.value || '';
-                onSearch(search, regionValue);
-
+                onSearch(regionValue, search);
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [search, region]);
+        }, [region, search]);
 
         return (
                 <Wrapper>

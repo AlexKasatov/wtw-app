@@ -1,34 +1,49 @@
-import { useState, useEffect, Children } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+/* eslint-disable no-console */
+import { useState, useEffect, Children, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ApiCountries from '../api/config';
 import Controls from '../components/Controls';
 import List from '../components/List';
 import Card from '../components/Card';
-
+import { useProviderContext } from '../hooks/useProviderContext';
 import useFetch from '../hooks/useFetch';
 import { Loader } from '../components/UI/spinner/Loader';
-import { useProviderContext } from '../hooks/useProviderContext';
 
 const HomePage = () => {
-        const { countries, isCountryLoading, isError } = useProviderContext();
-        const [filtredCountries, setFiltredCountries] = useState(countries);
-
+        const { countries, setCountries } = useProviderContext();
         const navigate = useNavigate();
+        const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
+                if (!countries.length) {
+                        const response = await ApiCountries.getAll('name,capital,flags,population,region');
+                        setCountries(response.data);
+                }
+        });
 
-        const handleSearch = (search, region) => {
+        const [filteredCountries, setFilteredCountries] = useState(countries);
+
+        const handleSearch = (region, search) => {
                 let data = [...countries];
 
                 if (region) {
-                        data = data.filter((c) => c.region.inculdes(region));
+                        data = data.filter((c) => c.region.includes(region));
                 }
 
                 if (search) {
-                        // eslint-disable-next-line no-unused-vars
                         data = data.filter((c) => c.name.toLowerCase().includes(search.toLowerCase()));
                 }
 
-                setFiltredCountries(data);
+                setFilteredCountries(data);
         };
+
+        useEffect(() => {
+                fetchCountry();
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
+
+        useMemo(() => {
+                handleSearch();
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [countries]);
 
         const handleOpenDetails = (countryName) => {
                 navigate(`/country/${countryName}`);
@@ -41,7 +56,7 @@ const HomePage = () => {
                                 <Loader />
                         ) : (
                                 <List>
-                                        {countries.map((c) => {
+                                        {filteredCountries.map((c) => {
                                                 const countryInfo = {
                                                         img: c.flags.png,
                                                         name: c.name,
