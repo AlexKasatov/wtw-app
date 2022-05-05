@@ -35,6 +35,11 @@ const HomePage = () => {
                 setFilteredCountries(data);
         };
 
+        // const handleReverse = () => {
+        //         setFilteredCountries(filteredCountries.reverse());
+        //         console.log(filteredCountries);
+        // };
+
         useEffect(() => {
                 fetchCountry();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,6 +47,7 @@ const HomePage = () => {
 
         useMemo(() => {
                 handleSearch();
+
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [countries]);
 
