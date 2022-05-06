@@ -26,4 +26,13 @@ export default class ApiCountries {
                 });
                 return response;
         }
+
+        static async getByCode(code) {
+                const response = await axios.get(`${BASE_URL}alpha`, {
+                        params: {
+                                codes: code.join(),
+                        },
+                });
+                return response;
+        }
 }

@@ -12,6 +12,7 @@ import { Loader } from '../components/UI/spinner/Loader';
 const HomePage = () => {
         const { countries, setCountries } = useProviderContext();
         const navigate = useNavigate();
+
         const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
                 if (!countries.length) {
                         const response = await ApiCountries.getAll('name,capital,flags,population,region');

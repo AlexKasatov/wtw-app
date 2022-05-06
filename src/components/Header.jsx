@@ -33,6 +33,7 @@ const ModeSwitcher = styled.div`
         /* font-weight: var(--fw-bold); */
         cursor: pointer;
         text-transform: capitalize;
+        transition: all 0.3s ease;
 `;
 
 // !

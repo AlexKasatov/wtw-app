@@ -25,7 +25,7 @@ body[data-theme="dark"] {
   --color-bg: hsl(207, 26%, 17%);
   --color-ui-base: hsl(209, 23%, 22%);
 
-  --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+  --shadow: rgba(6, 2, 30, 0.2) 0 0 8px;
 }
 
 body[data-theme="light"] {
@@ -45,4 +45,5 @@ body {
   color: var(--color-text);
   font-weight: var(--fw-light);
   background-color: var(--color-bg);
+  transition: all 1s ease;
 }
