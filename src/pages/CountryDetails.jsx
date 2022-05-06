@@ -6,6 +6,7 @@ import useFetch from '../hooks/useFetch';
 import ApiCountries from '../api/config';
 import { Button } from '../components/UI/spinner/Button';
 import Info from '../components/Info';
+import Map from '../components/Map';
 
 const CountryDetails = () => {
         const param = useParams();
@@ -16,13 +17,13 @@ const CountryDetails = () => {
                 const response = await ApiCountries.getByName(param.name);
                 setCountry(response.data[0]);
         });
-        console.log('🚀 ~ file: CountryDetails.jsx ~ line 13 ~ CountryDetails ~ country', country);
 
         useEffect(() => {
                 fetchCountry(`${param.name}`);
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [param.name]);
 
+        console.log('🚀 ~ file: CountryDetails.jsx ~ line 16 ~ CountryDetails ~ country', country);
         // const openSubCounrty = () => {
         //         navigate(`${param}/subcountry`);
         // };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import ApiCountries from '../api/config';
 import useFetch from '../hooks/useFetch';
+import Map from './Map';
 
 const Wrapper = styled.section`
         & > {
@@ -111,7 +112,7 @@ const Info = (props) => {
                 currencies = [],
                 languages = [],
                 borders = [],
-                push,
+                latlng,
         } = props;
 
         const navigate = useNavigate();
@@ -124,6 +125,7 @@ const Info = (props) => {
 
         useEffect(() => {
                 fetchCountry();
+                // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [borders]);
 
         const handleOpenNeighbor = (countryName) => {
@@ -131,71 +133,84 @@ const Info = (props) => {
         };
 
         return (
-                <Wrapper>
-                        <InfoImage src={flags.png} alt={name} />
-                        <div>
-                                <InfoTitle>{name}</InfoTitle>
-                                <ListGroup>
-                                        <List>
-                                                <ListItem>
-                                                        <b>Native Name: </b> {nativeName}
-                                                </ListItem>
+                <>
+                        <Wrapper>
+                                <InfoImage src={flags.png} alt={name} />
+                                <div>
+                                        <InfoTitle>{name}</InfoTitle>
+                                        <ListGroup>
+                                                <List>
+                                                        <ListItem>
+                                                                <b>Native Name: </b> {nativeName}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Population: </b> {population}
-                                                </ListItem>
+                                                        <ListItem>
+                                                                <b>Population: </b> {population}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Region: </b> {region}
-                                                </ListItem>
+                                                        <ListItem>
+                                                                <b>Region: </b> {region}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Sub-Region: </b> {subregion}
-                                                </ListItem>
+                                                        <ListItem>
+                                                                <b>Sub-Region: </b> {subregion}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Capital: </b> {capital}
-                                                </ListItem>
-                                        </List>
-                                        <List>
-                                                <ListItem>
-                                                        <b>Top Level Domain: </b>{' '}
-                                                        {Children.toArray(
-                                                                topLevelDomain.map((domain) => <span>{domain}</span>)
-                                                        )}
-                                                </ListItem>
+                                                        <ListItem>
+                                                                <b>Capital: </b> {capital}
+                                                        </ListItem>
+                                                </List>
+                                                <List>
+                                                        <ListItem>
+                                                                <b>Top Level Domain: </b>{' '}
+                                                                {Children.toArray(
+                                                                        topLevelDomain.map((domain) => (
+                                                                                <span>{domain}</span>
+                                                                        ))
+                                                                )}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Currency: </b>{' '}
-                                                        {Children.toArray(
-                                                                currencies.map((c) => <span>{c.name} </span>)
-                                                        )}
-                                                </ListItem>
+                                                        <ListItem>
+                                                                <b>Currency: </b>{' '}
+                                                                {Children.toArray(
+                                                                        currencies.map((c) => <span>{c.name} </span>)
+                                                                )}
+                                                        </ListItem>
 
-                                                <ListItem>
-                                                        <b>Languages: </b>{' '}
-                                                        {Children.toArray(languages.map((l) => <span>{l.name} </span>))}
-                                                </ListItem>
-                                        </List>
-                                </ListGroup>
-                                <Meta>
-                                        <b>Border Counries</b>
-                                        {!borders.length ? (
-                                                <span> There's No Borders </span>
-                                        ) : (
-                                                <TagGroup>
-                                                        {Children.toArray(
-                                                                neighbors.map((n) => (
-                                                                        <Tag onClick={() => handleOpenNeighbor(n.name)}>
-                                                                                {n.name}{' '}
-                                                                        </Tag>
-                                                                ))
-                                                        )}
-                                                </TagGroup>
-                                        )}
-                                </Meta>
-                        </div>
-                </Wrapper>
+                                                        <ListItem>
+                                                                <b>Languages: </b>{' '}
+                                                                {Children.toArray(
+                                                                        languages.map((l) => <span>{l.name} </span>)
+                                                                )}
+                                                        </ListItem>
+                                                </List>
+                                        </ListGroup>
+                                        <Meta>
+                                                <b>Border Counries</b>
+                                                {!borders.length ? (
+                                                        <span> There's No Borders </span>
+                                                ) : (
+                                                        <TagGroup>
+                                                                {Children.toArray(
+                                                                        neighbors.map((n) => (
+                                                                                <Tag
+                                                                                        onClick={() =>
+                                                                                                handleOpenNeighbor(
+                                                                                                        n.name
+                                                                                                )
+                                                                                        }
+                                                                                >
+                                                                                        {n.name}{' '}
+                                                                                </Tag>
+                                                                        ))
+                                                                )}
+                                                        </TagGroup>
+                                                )}
+                                        </Meta>
+                                </div>
+                        </Wrapper>
+                        <Map location={latlng} />
+                </>
         );
 };
 
