@@ -23,7 +23,6 @@ const CountryDetails = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [param.name]);
 
-        console.log('🚀 ~ file: CountryDetails.jsx ~ line 16 ~ CountryDetails ~ country', country);
         // const openSubCounrty = () => {
         //         navigate(`${param}/subcountry`);
         // };

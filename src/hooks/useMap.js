@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
 
 export const useMap = (mapContainer, location, mapZoom = 8) => {
         const MY_KEY = process.env.REACT_APP_API_KEY;
@@ -16,6 +16,7 @@ export const useMap = (mapContainer, location, mapZoom = 8) => {
                                         style: 'mapbox://styles/mapbox/dark-v10',
                                         center: location.reverse(),
                                         zoom: mapZoom,
+                                        marker: true,
                                 });
 
                                 map.addControl(new mapboxgl.NavigationControl(), 'top-right');

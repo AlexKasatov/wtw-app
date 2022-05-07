@@ -2,13 +2,6 @@ import styled from 'styled-components';
 import { useRef } from 'react';
 import { useMap } from '../hooks/useMap';
 
-const MapWrapper = styled.div`
-        /* margin-top: 3rem;
-        border-radius: var(--radii);
-        border: 5px solid var(--color-ui-base);
-        box-shadow: var(--shadow); */
-`;
-
 const MapStyled = styled.div`
         position: relative;
         height: 400px;
@@ -20,11 +13,7 @@ const MapStyled = styled.div`
 const Map = ({ location }) => {
         const mapRef = useRef();
         useMap(mapRef, location);
-        return (
-                <MapWrapper>
-                        <MapStyled ref={mapRef}>Map</MapStyled>
-                </MapWrapper>
-        );
+        return <MapStyled ref={mapRef}>Map</MapStyled>;
 };
 
 export default Map;
