@@ -10,7 +10,7 @@ export const useMap = (mapContainer, location, mapZoom = 8) => {
 
         useLayoutEffect(() => {
                 (async () => {
-                        if (location && mapContainer) {
+                        if (location && mapContainer && mode) {
                                 const map = new mapboxgl.Map({
                                         container: mapContainer.current,
                                         style: mode === 'light' ? lightTheme : darkTheme,

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ApiCountries from '../api/config';
 import useFetch from '../hooks/useFetch';
 import Map from './Map';
+import { Loader } from './UI/spinner/Loader';
 
 const Wrapper = styled.section`
         & > {
@@ -86,7 +87,7 @@ const Meta = styled.div`
 
 const TagGroup = styled.div`
         display: flex;
-        gap: 2rem;
+        gap: 1rem;
         flex-wrap: wrap;
 `;
 
@@ -119,14 +120,16 @@ const Info = (props) => {
 
         const [neighbors, setNeighbors] = useState([]);
         const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
-                const response = await ApiCountries.getByCode(borders);
-                setNeighbors(response.data);
+                if (borders.length) {
+                        const response = await ApiCountries.getByCode(borders);
+                        setNeighbors(response.data);
+                }
         });
 
         useEffect(() => {
                 fetchCountry();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [borders]);
+        }, []);
 
         const handleOpenNeighbor = (countryName) => {
                 navigate(`/country/${countryName}`);
@@ -185,28 +188,33 @@ const Info = (props) => {
                                                         </ListItem>
                                                 </List>
                                         </ListGroup>
-                                        <Meta>
-                                                <b>Border Counries</b>
-                                                {!borders.length ? (
-                                                        <span> There's No Borders </span>
-                                                ) : (
-                                                        <TagGroup>
-                                                                {Children.toArray(
-                                                                        neighbors.map((n) => (
-                                                                                <Tag
-                                                                                        onClick={() =>
-                                                                                                handleOpenNeighbor(
-                                                                                                        n.name
-                                                                                                )
-                                                                                        }
-                                                                                >
-                                                                                        {n.name}{' '}
-                                                                                </Tag>
-                                                                        ))
-                                                                )}
-                                                        </TagGroup>
-                                                )}
-                                        </Meta>
+                                        {isCountryLoading ? (
+                                                <Loader />
+                                        ) : (
+                                                <Meta>
+                                                        <b>Border Counries</b>
+                                                        {!borders.length ? (
+                                                                <span> There's No Borders </span>
+                                                        ) : (
+                                                                <TagGroup>
+                                                                        {Children.toArray(
+                                                                                neighbors.map((n) => (
+                                                                                        <Tag
+                                                                                                onClick={() =>
+                                                                                                        handleOpenNeighbor(
+                                                                                                                n.name
+                                                                                                        )
+                                                                                                }
+                                                                                        >
+                                                                                                {n.name}
+                                                                                        </Tag>
+                                                                                ))
+                                                                        )}
+                                                                </TagGroup>
+                                                        )}
+                                                </Meta>
+                                        )}
+                                        {isError && <div>ERROR: {isError.message}</div>}
                                 </div>
                         </Wrapper>
                         <Map location={latlng} />

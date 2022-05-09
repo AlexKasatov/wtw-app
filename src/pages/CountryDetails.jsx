@@ -6,7 +6,7 @@ import useFetch from '../hooks/useFetch';
 import ApiCountries from '../api/config';
 import { Button } from '../components/UI/spinner/Button';
 import Info from '../components/Info';
-import Map from '../components/Map';
+import { Loader } from '../components/UI/spinner/Loader';
 
 const CountryDetails = () => {
         const param = useParams();
@@ -23,16 +23,14 @@ const CountryDetails = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [param.name]);
 
-        // const openSubCounrty = () => {
-        //         navigate(`${param}/subcountry`);
-        // };
-
         return (
                 <>
                         <Button onClick={() => navigate(-1)} type="button">
                                 <IoArrowBack /> Back
                         </Button>
-                        {country && <Info {...country} />}
+
+                        {isCountryLoading ? <Loader /> : country && <Info {...country} />}
+                        {isError && <div>{isError.message}</div>}
                 </>
         );
 };

@@ -8,19 +8,20 @@ import Card from '../components/Card';
 import { useProviderContext } from '../hooks/useProviderContext';
 import useFetch from '../hooks/useFetch';
 import { Loader } from '../components/UI/spinner/Loader';
+import Pagination from '../components/UI/spinner/Pagination/Pagination';
 
 const HomePage = () => {
         const { countries, setCountries } = useProviderContext();
         const navigate = useNavigate();
-
         const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
                 if (!countries.length) {
                         const response = await ApiCountries.getAll('name,capital,flags,population,region');
                         setCountries(response.data);
                 }
         });
-
         const [filteredCountries, setFilteredCountries] = useState(countries);
+        const [countriesPerPage] = useState(14);
+        const [currentPage, setCurrentPage] = useState(1);
 
         const handleSearch = (region, search) => {
                 let data = [...countries];
@@ -36,11 +37,6 @@ const HomePage = () => {
                 setFilteredCountries(data);
         };
 
-        // const handleReverse = () => {
-        //         setFilteredCountries(filteredCountries.reverse());
-        //         console.log(filteredCountries);
-        // };
-
         useEffect(() => {
                 fetchCountry();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,9 +48,18 @@ const HomePage = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [countries]);
 
+        // * Open country details page
+
         const handleOpenDetails = (countryName) => {
                 navigate(`/country/${countryName}`);
         };
+
+        // * Pagination
+        const indexOfLastCountry = currentPage * countriesPerPage;
+        const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+        const countriesPaginated = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+
+        const handleCurrentPage = (page) => setCurrentPage(page);
 
         return (
                 <>
@@ -63,7 +68,7 @@ const HomePage = () => {
                                 <Loader />
                         ) : (
                                 <List>
-                                        {filteredCountries.map((c) => {
+                                        {countriesPaginated.map((c) => {
                                                 const countryInfo = {
                                                         img: c.flags.png,
                                                         name: c.name,
@@ -93,6 +98,12 @@ const HomePage = () => {
                                 </List>
                         )}
                         {isError && <h1>{isError.message}</h1>}
+                        <Pagination
+                                currentPage={currentPage}
+                                onCurrentPage={handleCurrentPage}
+                                totalCountries={filteredCountries.length}
+                                countriesPerPage={countriesPerPage}
+                        />
                 </>
         );
 };

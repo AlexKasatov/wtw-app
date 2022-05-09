@@ -13,7 +13,7 @@ const MapStyled = styled.div`
 const Map = ({ location }) => {
         const mapRef = useRef();
         useMap(mapRef, location);
-        return <MapStyled ref={mapRef}>Map</MapStyled>;
+        return <MapStyled ref={mapRef} />;
 };
 
 export default Map;
