@@ -1,7 +1,6 @@
-import { useLayoutEffect, useState, useEffect, useMemo, Children } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import ApiCountries from '../api/config';
-import useFetch from '../hooks/useFetch';
+
 import { useProviderContext } from '../hooks/useProviderContext';
 
 const Details = () => {
@@ -14,12 +13,12 @@ const Details = () => {
         const navigate = useNavigate();
 
         useEffect(() => {
-                setCountry(JSON.parse(window.localStorage.getItem('country', JSON.stringify(country))));
+                setCountry(JSON.parse(localStorage.getItem('country')));
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
         useEffect(() => {
-                window.localStorage.setItem('country', JSON.stringify(country));
+                localStorage.setItem('country', JSON.stringify(country));
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [country]);
 

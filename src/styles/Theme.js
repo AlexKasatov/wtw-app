@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
     /** Other */
     --raddii: 0.5rem;
+    --raddii-btn: 2rem;
     }
 
     body {

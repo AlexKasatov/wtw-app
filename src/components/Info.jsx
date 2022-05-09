@@ -21,7 +21,7 @@ const Wrapper = styled.section`
                 gap: 5rem;
         }
 
-        @media (min-width: 1024) {
+        @media (min-width: 1024px) {
                 grid-template-columns: minmax(400px, 600px) 1fr;
         }
 `;

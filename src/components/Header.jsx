@@ -31,40 +31,26 @@ const Title = styled(Link).attrs({
 const ModeSwitcher = styled.div`
         color: var(--colors-text);
         font-size: var(--fs-sm);
-        /* font-weight: var(--fw-bold); */
         cursor: pointer;
         text-transform: capitalize;
         transition: all 0.3s ease;
 `;
 
-// !
-
 const Header = () => {
         const { toggleTheme, mode } = useProviderContext();
-        //! TODO REFACTOR to ReactContext --------
-        // const [theme, setTheme] = useState('light');
-        // const toggleThemeOld = () => setTheme(theme === 'light' ? 'dark' : 'light');
-
-        // useEffect(() => {
-        //         document.body.setAttribute('data-theme', theme);
-        // }, [theme]);
-        // !---------------------------
 
         return (
                 <HeaderEl>
                         <Container>
                                 <Wrapper>
                                         <Title>Where is the world?</Title>
-                                        {/* <button onClick={toggleTheme} type="button">
-                                                CHANGE THEME
-                                        </button> */}
                                         <ModeSwitcher onClick={toggleTheme}>
                                                 {mode === 'light' ? (
                                                         <IoMoonOutline size="14px" />
                                                 ) : (
                                                         <IoMoon size="14px" />
                                                 )}
-                                                <span style={{ marginLeft: '0.75rem' }}>{mode}</span>
+                                                {mode && <span style={{ marginLeft: '0.75rem' }}>{mode}</span>}
                                         </ModeSwitcher>
                                 </Wrapper>
                         </Container>
