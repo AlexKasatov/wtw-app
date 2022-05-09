@@ -28,7 +28,7 @@ const Wrapper = styled.section`
 
 const InfoImage = styled.img`
         border-radius: var(--radii);
-        box-shadow: var(--shadow);
+        box-shadow: ${({ theme }) => theme.shadow};
         margin: 0;
         padding: 0;
         display: block;
@@ -86,15 +86,15 @@ const Meta = styled.div`
 
 const TagGroup = styled.div`
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
         flex-wrap: wrap;
 `;
 
 const Tag = styled.span`
         padding: 0 1rem;
-        background-color: var(--color-ui-base);
-        box-shadow: var(--shadow);
-        line-height: 2;
+        background-color: ${({ theme }) => theme.colorUiBase};
+        box-shadow: ${({ theme }) => theme.shadow};
+        line-height: 2.5;
         border-radius: var(--radii);
         cursor: pointer;
 `;

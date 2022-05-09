@@ -6,7 +6,7 @@ import { Container } from './Container';
 import { useProviderContext } from '../hooks/useProviderContext';
 
 const HeaderEl = styled.header`
-        box-shadow: var(--shadow);
+        box-shadow: ${({ theme }) => theme.shadow};
         background-color: var(--colors-ui-base);
 `;
 
@@ -40,14 +40,14 @@ const ModeSwitcher = styled.div`
 // !
 
 const Header = () => {
-        const { toggleTheme } = useProviderContext();
+        const { toggleTheme, mode } = useProviderContext();
         //! TODO REFACTOR to ReactContext --------
-        const [theme, setTheme] = useState('light');
-        const toggleThemeOld = () => setTheme(theme === 'light' ? 'dark' : 'light');
+        // const [theme, setTheme] = useState('light');
+        // const toggleThemeOld = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
-        useEffect(() => {
-                document.body.setAttribute('data-theme', theme);
-        }, [theme]);
+        // useEffect(() => {
+        //         document.body.setAttribute('data-theme', theme);
+        // }, [theme]);
         // !---------------------------
 
         return (
@@ -55,16 +55,16 @@ const Header = () => {
                         <Container>
                                 <Wrapper>
                                         <Title>Where is the world?</Title>
-                                        <button onClick={toggleTheme} type="button">
+                                        {/* <button onClick={toggleTheme} type="button">
                                                 CHANGE THEME
-                                        </button>
-                                        <ModeSwitcher onClick={toggleThemeOld}>
-                                                {theme === 'light' ? (
+                                        </button> */}
+                                        <ModeSwitcher onClick={toggleTheme}>
+                                                {mode === 'light' ? (
                                                         <IoMoonOutline size="14px" />
                                                 ) : (
                                                         <IoMoon size="14px" />
                                                 )}
-                                                <span style={{ marginLeft: '0.75rem' }}>{theme}</span>
+                                                <span style={{ marginLeft: '0.75rem' }}>{mode}</span>
                                         </ModeSwitcher>
                                 </Wrapper>
                         </Container>

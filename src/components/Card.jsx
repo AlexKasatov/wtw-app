@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Wrapper = styled.article`
         border-radius: var(--raddii);
-        background-color: var(--color-bg);
-        box-shadow: var(--shadow);
+        background-color: ${({ theme }) => theme.colorBg};
+        box-shadow: ${({ theme }) => theme.shadow};
         cursor: pointer;
         overflow: hidden;
 `;
@@ -16,7 +16,7 @@ const CardImage = styled.img`
 
         object-fit: cover;
         object-position: center;
-        box-shadow: var(--shadow);
+        box-shadow: ${({ theme }) => theme.shadow};
 
         @media (max-width: 1024px) {
                 height: 350px;

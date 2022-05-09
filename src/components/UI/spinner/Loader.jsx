@@ -14,7 +14,7 @@ export const LoaderDotsStyled = styled.div`
 
         circle {
                 fill: none;
-                stroke: rgb(116, 248, 252);
+                stroke: ${({ theme }) => theme.colorText};
                 stroke-width: 4;
                 stroke-dasharray: 1, 200;
                 stroke-dashoffset: 0;

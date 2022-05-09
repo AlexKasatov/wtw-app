@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { createContext, useState, useMemo, useEffect } from 'react';
+import { createContext, useState, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { darkTheme, lightTheme } from '../styles/Theme';

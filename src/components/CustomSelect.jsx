@@ -6,20 +6,19 @@ export const CustomSelect = styled(Select).attrs({
         styles: {
                 control: (provided) => ({
                         ...provided,
-                        backgroundColor: 'var(--color-bg)',
-                        color: 'var(--color-text)',
+                        backgroundColor: `${({ theme }) => theme.colorBg}`,
+                        color: `${({ theme }) => theme.colorText}`,
                         borderRadius: 'var(--raddii)',
                         padding: '0.25rem',
                         border: 'none',
-                        boxShadow: 'var(--shadow)',
+                        boxShadow: `${({ theme }) => theme.shadow}`,
                         height: '50px',
                         cursor: 'pointer',
                 }),
                 option: (provided, state) => ({
                         ...provided,
                         cursor: 'pointer',
-                        color: 'var(--color-text)',
-                        backgroundColor: state.isSelected ? 'var(--color-bg)' : 'var(--color-ui-base)',
+                        color: `${({ theme }) => theme.colorText}`,
                 }),
         },
 })`
@@ -29,7 +28,7 @@ export const CustomSelect = styled(Select).attrs({
         border: none;
 
         & > * {
-                box-shadow: var(--shadow);
+                box-shadow: ${({ theme }) => theme.shadow};
         }
 
         & input {
@@ -38,11 +37,11 @@ export const CustomSelect = styled(Select).attrs({
 
         /* placeholder's color */
         & * {
-                color: var(--color-text) !important;
+                color: ${({ theme }) => theme.colorText} !important;
         }
 
         & > div[id] {
-                background-color: var(--color-ui-base);
+                background-color: ${({ theme }) => theme.colorUiBase};
         }
 
         /* placeholder's color with class */
@@ -50,3 +49,26 @@ export const CustomSelect = styled(Select).attrs({
                 color: var(--color-text);
         } */
 `;
+
+// ? old version withouth styled-components theming
+// export const CustomSelect = styled(Select).attrs({
+//         styles: {
+//                 control: (provided) => ({
+//                         ...provided,
+//                         backgroundColor: 'var(--color-bg)',
+//                         color: 'var(--color-text)',
+//                         borderRadius: 'var(--raddii)',
+//                         padding: '0.25rem',
+//                         border: 'none',
+//                         boxShadow: 'var(--shadow)',
+//                         height: '50px',
+//                         cursor: 'pointer',
+//                 }),
+//                 option: (provided, state) => ({
+//                         ...provided,
+//                         cursor: 'pointer',
+//                         color: 'var(--color-text)',
+//                         backgroundColor: state.isSelected ? 'var(--color-bg)' : 'var(--color-ui-base)',
+//                 }),
+//         },
+// })`

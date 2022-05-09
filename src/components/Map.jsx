@@ -6,7 +6,7 @@ const MapStyled = styled.div`
         position: relative;
         height: 400px;
         margin: 4rem 0;
-        box-shadow: var(--shadow);
+        box-shadow: ${({ theme }) => theme.shadow};
         border-radius: 1.2rem;
 `;
 
