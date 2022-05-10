@@ -7,6 +7,7 @@ import ApiCountries from '../api/config';
 import { Button } from '../components/UI/spinner/Button';
 import Info from '../components/Info';
 import { Loader } from '../components/UI/spinner/Loader';
+import useTitle from '../hooks/useTitle';
 
 const CountryDetails = () => {
         const param = useParams();
@@ -17,6 +18,8 @@ const CountryDetails = () => {
                 const response = await ApiCountries.getByName(param.name);
                 setCountry(response.data[0]);
         });
+
+        useTitle(param.name, param.name);
 
         useEffect(() => {
                 fetchCountry(`${param.name}`);

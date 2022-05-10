@@ -9,6 +9,7 @@ import { useProviderContext } from '../hooks/useProviderContext';
 import useFetch from '../hooks/useFetch';
 import { Loader } from '../components/UI/spinner/Loader';
 import Pagination from '../components/UI/Pagination/Pagination';
+import useTitle from '../hooks/useTitle';
 
 const HomePage = () => {
         const { countries, setCountries } = useProviderContext();
@@ -53,6 +54,8 @@ const HomePage = () => {
                 }
                 setPaginatedCountries(data);
         };
+
+        useTitle('WTW');
 
         // fetch countries data
         useEffect(() => {
