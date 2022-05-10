@@ -103,6 +103,7 @@ const HomePage = () => {
                                 onCurrentPage={handleCurrentPage}
                                 totalCountries={filteredCountries.length}
                                 countriesPerPage={countriesPerPage}
+                                setCurrentPage={setCurrentPage}
                         />
                 </>
         );

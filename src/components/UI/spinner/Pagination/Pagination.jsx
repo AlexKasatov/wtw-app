@@ -3,7 +3,7 @@ import { Children, useMemo } from 'react';
 import { ActiveButton, PaginationList } from './Pagination.styled';
 import { Button } from '../Button';
 
-const Pagination = ({ currentPage, onCurrentPage, totalCountries, countriesPerPage }) => {
+const Pagination = ({ currentPage, onCurrentPage, totalCountries, countriesPerPage, setCurrentPage }) => {
         const paginationLinks = [];
 
         useMemo(() => {
@@ -13,9 +13,20 @@ const Pagination = ({ currentPage, onCurrentPage, totalCountries, countriesPerPa
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [totalCountries, countriesPerPage, onCurrentPage]);
 
+        const handleCurrentPageIncrement = () => {
+                if (currentPage < paginationLinks.length) setCurrentPage((prev) => prev + 1);
+        };
+
+        const handleCurrentPageDecrement = () => {
+                if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+        };
+
         return (
                 <nav>
                         <PaginationList>
+                                <Button onClick={handleCurrentPageDecrement} disabled={currentPage === 1}>
+                                        Prev
+                                </Button>
                                 {Children.toArray(
                                         paginationLinks.map((number) => (
                                                 <li>
@@ -37,6 +48,12 @@ const Pagination = ({ currentPage, onCurrentPage, totalCountries, countriesPerPa
                                                 </li>
                                         ))
                                 )}
+                                <Button
+                                        disabled={currentPage === paginationLinks.length}
+                                        onClick={handleCurrentPageIncrement}
+                                >
+                                        Next
+                                </Button>
                         </PaginationList>
                 </nav>
         );

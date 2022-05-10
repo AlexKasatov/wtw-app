@@ -12,8 +12,15 @@ export const Button = styled.button`
         align-items: center;
         gap: 0.75rem;
 
-        color: ${({ theme }) => theme.colorText};
         cursor: pointer;
+
+        :disabled {
+                cursor: pointer;
+                opacity: 0.5;
+                pointer-events: none;
+        }
+
+        color: ${({ theme }) => theme.colorText};
 
         &:hover {
                 background-color: ${({ theme }) => theme.colorBg};
