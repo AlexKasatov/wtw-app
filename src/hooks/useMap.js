@@ -1,8 +1,9 @@
 import mapboxgl from 'mapbox-gl';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useProviderContext } from './useProviderContext';
 
 export const useMap = (mapContainer, location, mapZoom = 8) => {
+        const [lnglat] = useState(location);
         const { mode } = useProviderContext();
         mapboxgl.accessToken = process.env.REACT_APP_API_KEY;
         const lightTheme = 'mapbox://styles/mapbox/light-v10';
@@ -14,7 +15,7 @@ export const useMap = (mapContainer, location, mapZoom = 8) => {
                                 const map = new mapboxgl.Map({
                                         container: mapContainer.current,
                                         style: mode === 'light' ? lightTheme : darkTheme,
-                                        center: location.reverse(),
+                                        center: lnglat.reverse(),
                                         zoom: mapZoom,
                                         marker: true,
                                 });
