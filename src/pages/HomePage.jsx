@@ -8,7 +8,7 @@ import Card from '../components/Card';
 import { useProviderContext } from '../hooks/useProviderContext';
 import useFetch from '../hooks/useFetch';
 import { Loader } from '../components/UI/spinner/Loader';
-import Pagination from '../components/UI/spinner/Pagination/Pagination';
+import Pagination from '../components/UI/Pagination/Pagination';
 
 const HomePage = () => {
         const { countries, setCountries } = useProviderContext();
@@ -20,9 +20,11 @@ const HomePage = () => {
                 }
         });
         const [filteredCountries, setFilteredCountries] = useState(countries);
-        const [countriesPerPage] = useState(14);
+        const [paginatedCountries, setPaginatedCountries] = useState(filteredCountries);
+        const [countriesPerPage] = useState(20);
         const [currentPage, setCurrentPage] = useState(1);
 
+        // filter and search countries
         const handleSearch = (region, search) => {
                 let data = [...countries];
 
@@ -35,30 +37,47 @@ const HomePage = () => {
                 }
 
                 setFilteredCountries(data);
+
+                setCurrentPage(1); // update current page
         };
 
+        //  set up array for pagination
+        const handlePagination = () => {
+                const indexOfLastCountry = currentPage * countriesPerPage; // get the index of the last country
+                const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // get the index of the first country
+                let data = [...filteredCountries]; // copy the filtered countries state
+                if (data.length >= 2) {
+                        // if there are more than 2 countries
+                        data = data.slice(indexOfFirstCountry, indexOfLastCountry);
+                        setPaginatedCountries(data);
+                }
+                setPaginatedCountries(data);
+        };
+
+        // fetch countries data
         useEffect(() => {
                 fetchCountry();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []);
+        }, [countries]);
 
+        // memoize search & sort and update [filteredCountries] state
         useMemo(() => {
                 handleSearch();
-
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [countries]);
 
-        // * Open country details page
+        // memoize pagination and update [paginatedCountries] state
+        useMemo(() => {
+                handlePagination();
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [filteredCountries, currentPage]);
 
+        // open country details page
         const handleOpenDetails = (countryName) => {
                 navigate(`/country/${countryName}`);
         };
 
-        // * Pagination
-        const indexOfLastCountry = currentPage * countriesPerPage;
-        const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-        const countriesPaginated = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-
+        //  update current page
         const handleCurrentPage = (page) => setCurrentPage(page);
 
         return (
@@ -68,7 +87,7 @@ const HomePage = () => {
                                 <Loader />
                         ) : (
                                 <List>
-                                        {countriesPaginated.map((c) => {
+                                        {paginatedCountries.map((c) => {
                                                 const countryInfo = {
                                                         img: c.flags.png,
                                                         name: c.name,
