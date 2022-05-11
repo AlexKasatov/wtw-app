@@ -26,6 +26,11 @@ const Title = styled(Link).attrs({
         font-size: var(--fs-sm);
         text-decoration: none;
         font-weight: var(--fw-bold);
+        text-transform: uppercase;
+
+        @media (min-width: 1024px) {
+                font-size: var(--fs-d-sm);
+        }
 `;
 
 const ModeSwitcher = styled.div`
@@ -43,7 +48,7 @@ const Header = () => {
                 <HeaderEl>
                         <Container>
                                 <Wrapper>
-                                        <Title>Where is the world?</Title>
+                                        <Title>🌍 Where is the world?</Title>
                                         <ModeSwitcher onClick={toggleTheme}>
                                                 {mode === 'light' ? (
                                                         <IoMoonOutline size="14px" />

@@ -4,6 +4,7 @@ export const Button = styled.button`
         padding: 0 1rem;
         background-color: ${({ theme }) => theme.colorUiBase};
         box-shadow: ${({ theme }) => theme.shadow};
+        max-width: 160px;
         line-height: 2.5;
         border-radius: var(--raddii-btn);
 

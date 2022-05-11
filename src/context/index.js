@@ -17,9 +17,9 @@ const ContextProvider = ({ children }) => {
                 setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
         };
 
-        // const value = useMemo(() => ({ theme, toggleTheme, countries, setCountries }), [theme, countries]);
+        const value = useMemo(() => ({ mode, toggleTheme, setMode, countries, setCountries }), [mode, countries]);
 
-        const value = { mode, toggleTheme, setMode, countries, setCountries };
+        // const value = { mode, toggleTheme, setMode, countries, setCountries };
 
         return (
                 <Context.Provider value={value}>

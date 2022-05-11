@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState, Children, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import useFetch from '../hooks/useFetch';

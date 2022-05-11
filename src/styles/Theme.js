@@ -10,6 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     --family: "Nunito", sans-serif;
     --fs-sm: 14px;
     --fs-md: 16px;
+    --fs-lg: 18px;
+    --fs-xl: 20px;
+    --fs-d-xs: 24px;
+    --fs-d-sm: 30px;
     --fw-light: 300;
     --fw-normal: 600;
     --fw-bold: 800;
@@ -44,3 +48,6 @@ export const darkTheme = {
 
         shadow: 'rgba(6, 2, 30, 0.2) 0 0 8px',
 };
+
+// TODO - add new colors for dark theme
+// #121212 - main background color for dark theme
