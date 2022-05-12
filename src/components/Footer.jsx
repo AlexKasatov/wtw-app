@@ -4,7 +4,6 @@ import { Container } from './Container';
 import { Button } from './UI/spinner/Button';
 
 export const FooterStyled = styled.footer`
-        box-shadow: ${({ theme }) => theme.shadow};
         background-color: var(--colors-ui-base);
 
         display: flex;

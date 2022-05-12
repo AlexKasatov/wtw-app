@@ -14,7 +14,7 @@ const CountryDetails = () => {
         const navigate = useNavigate();
 
         const [country, setCountry] = useState(null);
-        const [fetchCountry, isCountryLoading, isError] = useFetch(async (parameters) => {
+        const [fetchCountry, isCountryLoading, isError] = useFetch(async () => {
                 const response = await ApiCountries.getByName(param.name);
                 setCountry(response.data[0]);
         });

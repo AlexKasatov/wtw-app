@@ -24,6 +24,6 @@ export const Button = styled.button`
         color: ${({ theme }) => theme.colorText};
 
         &:hover {
-                background-color: ${({ theme }) => theme.colorBg};
+                background-color: ${({ theme }) => theme.colorUiBase2};
         }
 `;

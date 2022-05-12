@@ -39,6 +39,7 @@ const InfoImage = styled.img`
 `;
 
 const InfoTitle = styled.h1`
+        font-size: 3rem;
         margin: 0;
         font-weight: var(--fw-normal);
 `;
@@ -93,11 +94,14 @@ const TagGroup = styled.div`
 
 const Tag = styled.span`
         padding: 0 1rem;
+        border-radius: var(--raddii-btn);
         background-color: ${({ theme }) => theme.colorUiBase};
         box-shadow: ${({ theme }) => theme.shadow};
         line-height: 2.5;
-        border-radius: var(--radii);
         cursor: pointer;
+        &:hover {
+                background-color: ${({ theme }) => theme.colorUiBase2};
+        }
 `;
 
 const Info = (props) => {

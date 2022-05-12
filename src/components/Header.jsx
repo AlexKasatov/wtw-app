@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from './Container';
 import { useProviderContext } from '../hooks/useProviderContext';

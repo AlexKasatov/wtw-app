@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.article`
@@ -7,6 +7,11 @@ const Wrapper = styled.article`
         box-shadow: ${({ theme }) => theme.shadow};
         cursor: pointer;
         overflow: hidden;
+
+        &:hover {
+                transform: scale(0.9);
+                transition: transform 0.4s ease;
+        }
 `;
 
 const CardImage = styled.img`
@@ -29,7 +34,7 @@ const CardBody = styled.div`
 
 const CardTitle = styled.h2`
         /* margin: 0; */
-        font-size: var(--fs-md);
+        font-size: var(--fs-d-xs);
         font-weight: var(--fw-bold);
 `;
 
@@ -55,7 +60,7 @@ const Card = ({ img, name, info = [], onOpenDetails }) => (
                 <CardBody>
                         <CardTitle>{name}</CardTitle>
                         <CardList>
-                                {React.Children.toArray(
+                                {Children.toArray(
                                         info.map((el) => (
                                                 <CardListItem>
                                                         <b>{el.title}:</b> {el.description}
