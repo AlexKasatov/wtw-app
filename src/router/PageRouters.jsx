@@ -1,10 +1,12 @@
 import { Children } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import Layout from '../pages/Layout';
 import publicRoutes from './routes';
 
+// ? Deploy CRA with react-router-dom use HashRouter instead of BrowserRouter
+
 export const PageRouters = () => (
-        <BrowserRouter>
+        <HashRouter>
                 <Routes>
                         <Route path="/" element={<Layout />}>
                                 {Children.toArray(
@@ -19,5 +21,5 @@ export const PageRouters = () => (
                                 )}
                         </Route>
                 </Routes>
-        </BrowserRouter>
+        </HashRouter>
 );

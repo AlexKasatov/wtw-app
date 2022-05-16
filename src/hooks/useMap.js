@@ -1,6 +1,9 @@
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import mapboxgl from 'mapbox-gl';
 import { useLayoutEffect, useState } from 'react';
 import { useProviderContext } from './useProviderContext';
+
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default; // eslint-disable-line
 
 export const useMap = (mapContainer, location, mapZoom = 8) => {
         const [lnglat] = useState(location);
