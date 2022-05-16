@@ -18,14 +18,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/AlexKasatov/wtw-app"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/AlexKasatov/wtw-app" target="_blank" ><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/AlexKasatov/wtw-app">View Demo</a>
+    <a href="https://alexkasatov.github.io/wtw-app/#/" target="_blank"  >View Demo</a>
     ·
-    <a href="https://github.com/AlexKasatov/wtw-app/issues">Report Bug</a>
+    <a href="https://github.com/AlexKasatov/wtw-app/issues" target="_blank" >Report Bug</a>
     ·
-    <a href="https://github.com/AlexKasatov/wtw-app/issues">Request Feature</a>
+    <a href="https://github.com/AlexKasatov/wtw-app/issues" target="_blank" >Request Feature</a>
   </p>
 </div>
 
