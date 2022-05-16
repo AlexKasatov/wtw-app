@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 
     :root {
     /** Typography */
-    --family: "Nunito", sans-serif;
+    --family: "Nunito Sans", sans-serif;
     --fs-sm: 14px;
     --fs-md: 16px;
     --fs-lg: 18px;
