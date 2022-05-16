@@ -196,7 +196,7 @@ const Info = (props) => {
                                                 <Loader />
                                         ) : (
                                                 <Meta>
-                                                        <b>Border Counries</b>
+                                                        <b>Border Countries</b>
                                                         {!borders.length ? (
                                                                 <span> There's No Borders </span>
                                                         ) : (

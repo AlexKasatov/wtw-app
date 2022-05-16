@@ -1,70 +1,170 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://alexkasatov.github.io/wtw-app/#/">
+    <img src="public/img/readme-logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-In the project directory, you can run:
+<h3 align="center">Where Is The World</h3>
 
-### `npm start`
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/AlexKasatov/wtw-app"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/AlexKasatov/wtw-app">View Demo</a>
+    ·
+    <a href="https://github.com/AlexKasatov/wtw-app/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/AlexKasatov/wtw-app/issues">Request Feature</a>
+  </p>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  </ol>
+</details>
 
-### `npm test`
+<!-- ABOUT THE PROJECT -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About The Project
 
-### `npm run build`
+<!-- ! past project url here -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[![Product Name Screen Shot][product-screenshot]](https://alexkasatov.github.io/wtw-app/#/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Hi there! Here's my solution from [frontendementor.io](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
+I've added some custom features like map & stylies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run eject`
+### Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React.js](https://reactjs.org/)
+- [CRA](https://create-react-app.dev/)
+- [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
+- [Styled Components](https://styled-components.com/)
+- [Axios](https://axios-http.com/docs/intro)
+- [Mapbox](https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/)
+- [React-select](https://react-select.com/home)
+- [React-icons](https://react-icons.github.io/react-icons/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<!-- GETTING STARTED -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This is an example of how to list things you need to use the software and how to install them.
 
-### Code Splitting
+- npm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  ```sh
+  npm install npm@latest -g
+  ```
 
-### Analyzing the Bundle Size
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Get a free API Key at [Mapbox](https://www.mapbox.com/)
+2. Clone the repo
 
-### Making a Progressive Web App
+   ```sh
+   git clone https://github.com/AlexKasatov/wtw-app.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Install NPM packages
 
-### Advanced Configuration
+   ```sh
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Enter your API in `.env` file
 
-### Deployment
+   ```env
+   REACT_APP_API_KEY = "ENTER YOUR API";
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run build` fails to minify
+<!-- CONTRIBUTING -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Alex Kasatov - alexmorton_dev@protonmail.com - alexkasatovdesign@gmail.com
+
+Project Link: [https://github.com/AlexKasatov/wtw-app](https://github.com/AlexKasatov/wtw-app)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/AlexKasatov/wtw-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/AlexKasatov/wtw-app.svg?style=for-the-badge
+[forks-url]: https://github.com/AlexKasatov/wtw-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/AlexKasatov/wtw-app.svg?style=for-the-badge
+[stars-url]: https://github.com/AlexKasatov/wtw-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/AlexKasatov/wtw-app.svg?style=for-the-badge
+[issues-url]: https://github.com/AlexKasatov/wtw-app/issues
+[license-shield]: https://img.shields.io/github/license/AlexKasatov/wtw-app.svg?style=for-the-badge
+[license-url]: https://github.com/AlexKasatov/wtw-app/blob/master/LICENSE.txt
+[product-screenshot]: public/img/project-mockup.png
