@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/wtw-app/static/css/main.7d40bf6a.css",
+    "main.js": "/wtw-app/static/js/main.dd6cda58.js",
+    "static/js/mapbox-gl-csp-worker.59efe121.worker.js": "/wtw-app/static/js/mapbox-gl-csp-worker.59efe121.worker.js",
+    "index.html": "/wtw-app/index.html",
+    "main.7d40bf6a.css.map": "/wtw-app/static/css/main.7d40bf6a.css.map",
+    "main.dd6cda58.js.map": "/wtw-app/static/js/main.dd6cda58.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d40bf6a.css",
+    "static/js/main.dd6cda58.js"
+  ]
+}
