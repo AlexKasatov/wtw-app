@@ -61,8 +61,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://alexkasatov.github.io/wtw-app/#/)
 
+#### [View the demo](https://alexkasatov.github.io/wtw-app/#/)
 Hi there! Here's my solution from [frontendementor.io](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
 I've added some custom features like map & stylies.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
